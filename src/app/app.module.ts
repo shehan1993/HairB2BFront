@@ -11,12 +11,14 @@ import {MatButtonModule} from '@angular/material/button';
 import { AppComponent } from './app.component';
 
 import { CalenComponent } from './calen/calen.component';
+import { SalonViewComponent } from './salon-view/salon-view.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CalenComponent
+    CalenComponent,
+    SalonViewComponent
   ],
   imports: [
     BrowserModule,
