@@ -1,0 +1,355 @@
+
+<table>
+  <tr>
+      <th>
+<mat-form-field >
+  
+  <mat-select placeholder="Year" [(ngModel)]="year"  style='font-size:25px'>
+    <mat-option *ngFor="let y of years"  [value]="y.value" (click) ="calendar()" >        
+      {{ y.viewValue }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+      </th>
+
+  <th>            
+      <mat-form-field >
+          
+          <mat-select placeholder="Month" [(ngModel)]="month"   style='font-size:25px'>
+            <mat-option *ngFor="let m of months"  [value]="m.value" (click) ="calendar()" >        
+              {{ m.viewValue }}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+      
+              </th>
+              <th>
+      
+                  
+   </th>
+
+</table> 
+
+<table>
+
+
+<tr>
+<th sty >
+<div id = "calendar" style=' background-color: #5f1e545e'  >
+<p id = "calendar-day" >{{sevenDays[0]}}</p>
+
+</div>
+</th>
+
+<th><div id = "calendar"  >
+<p id = "calendar-day">{{sevenDays[1]}}</p>
+
+</div>
+</th>
+
+<th><div id = "calendar" >
+<p id = "calendar-day">{{sevenDays[2]}}</p>
+
+</div>
+</th>
+
+<th><div id = "calendar" >
+<p id = "calendar-day">{{sevenDays[3]}}</p>
+
+</div>
+</th>
+
+<th><div id = "calendar" >
+<p id = "calendar-day">{{sevenDays[4]}}</p>
+
+</div>
+</th>
+
+<th><div id = "calendar" >
+<p id = "calendar-day">{{sevenDays[5]}}</p>
+
+</div>
+</th>
+
+<th>
+    <div id = "calendar" style=' background-color: #5f1e545e' >
+    <p id = "calendar-day">{{sevenDays[6]}}</p>     
+    </div>
+</th>
+      
+<tr>
+<tr>
+<td>
+  <div id = "calendar" style=' background-color: #5f1e545e'  >
+      <p id = "calendar-day"   [ngStyle]="setStylesUpper(0)">{{calendarArray[0]}}</p>
+     
+   </div>
+  
+</td>
+<td>
+  <div id = "calendar" >
+      <p id = "calendar-day"[ngStyle]="setStylesUpper(1)">{{calendarArray[1]}}</p>
+      
+   </div>
+</td>
+<td>
+  <div id = "calendar" >
+      <p id = "calendar-day" [ngStyle]="setStylesUpper(2)">{{calendarArray[2]}}</p>
+      
+   </div>
+</td>
+<td>
+  <div id = "calendar" >
+      <p id = "calendar-day" [ngStyle]="setStylesUpper(3)">{{calendarArray[3]}}</p>
+      
+   </div>
+</td>
+<td>
+  <div id = "calendar" >
+      <p id = "calendar-day" [ngStyle]="setStylesUpper(4)">{{calendarArray[4]}}</p>
+     
+   </div>
+</td>
+<td>
+  <div id = "calendar">
+      <p id = "calendar-day" [ngStyle]="setStylesUpper(5)">{{calendarArray[5]}}</p>
+    
+   </div>
+</td>
+<td>
+  <div id = "calendar"style=' background-color: #5f1e545e'>
+      <p id = "calendar-day"[ngStyle]="setStylesUpper(6)">{{calendarArray[6]}}</p>
+      
+   </div>
+</td>
+
+</tr>
+<tr>
+  <td>
+      <div id = "calendar"style=' background-color: #5f1e545e'>
+          <p id = "calendar-day" >{{calendarArray[7]}}</p>
+          
+       </div>
+  </td>
+  <td>
+      <div id = "calendar">
+          <p id = "calendar-day">{{calendarArray[8]}}</p>
+          
+       </div>
+  </td>
+  <td>
+      <div id = "calendar">
+          <p id = "calendar-day">{{calendarArray[9]}}</p>
+          
+       </div>
+  </td>
+  <td>
+      <div id = "calendar">
+          <p id = "calendar-day"  >{{calendarArray[10]}}</p>
+         
+       </div>
+       
+  </td>
+  <td>
+      <div id = "calendar">
+          <p id = "calendar-day">{{calendarArray[11]}}</p>
+         
+       </div>
+  </td>
+  <td>
+      <div id = "calendar">
+          <p id = "calendar-day">{{calendarArray[12]}}</p>
+          
+       </div>
+  </td>
+  <td>
+      <div id = "calendar" style=' background-color: #5f1e545e'>
+          <p id = "calendar-day">{{calendarArray[13]}}</p>
+         
+       </div>
+  </td>
+  
+</tr>
+<tr>
+  <td>
+      <div id = "calendar" style=' background-color: #5f1e545e'>
+          <p id = "calendar-day">{{calendarArray[14]}}</p>
+          
+        </div>
+  </td>
+  <td>
+      <div id = "calendar">
+          <p id = "calendar-day">{{calendarArray[15]}}</p>
+         
+       </div>
+  </td>
+  <td>
+      <div id = "calendar">
+          <p id = "calendar-day">{{calendarArray[16]}}</p>
+          
+        </div>
+  </td>
+  <td>
+      <div id = "calendar">
+          <p id = "calendar-day">{{calendarArray[17]}}</p>
+         
+        </div>
+  </td>
+  <td>
+      <div id = "calendar">
+          <p id = "calendar-day">{{calendarArray[18]}}</p>
+          
+        </div>
+  </td>
+  <td>
+      <div id = "calendar">
+          <p id = "calendar-day">{{calendarArray[19]}}</p>
+          
+        </div>
+  </td>
+  <td>
+      <div id = "calendar"style=' background-color: #5f1e545e'>
+          <p id = "calendar-day">{{calendarArray[20]}}</p>
+          
+        </div>
+  </td>
+      
+</tr>
+<tr>
+  <td>
+      <div id = "calendar" style=' background-color: #5f1e545e'>
+          <p id = "calendar-day">{{calendarArray[21]}}</p>
+          
+        </div>
+  </td>
+  <td>
+      <div id = "calendar">
+          <p id = "calendar-day">{{calendarArray[22]}}</p>
+          
+       </div>
+  </td>
+  <td>
+      <div id = "calendar">
+          <p id = "calendar-day">{{calendarArray[23]}}</p>
+         
+        </div>
+  </td>
+  <td>
+      <div id = "calendar">
+          <p id = "calendar-day">{{calendarArray[24]}}</p>
+          
+        </div>
+  </td>
+  <td>
+      <div id = "calendar">
+          <p id = "calendar-day">{{calendarArray[25]}}</p>
+         
+        </div>
+  </td>
+  <td>
+      <div id = "calendar">
+          <p id = "calendar-day">{{calendarArray[26]}}</p>
+         
+        </div>
+  </td>
+  <td>
+      <div id = "calendar" style=' background-color: #5f1e545e'>
+          <p id = "calendar-day">{{calendarArray[27]}}</p>
+         
+        </div>
+  </td>
+  
+  </tr>
+  <tr>
+<td>
+  <div id = "calendar" style=' background-color: #5f1e545e'>
+      <p id = "calendar-day" [ngStyle]="setStylesDown(28)">{{calendarArray[28]}}</p>
+     
+   </div>
+</td>
+<td>
+  <div id = "calendar">
+      <p id = "calendar-day" [ngStyle]="setStylesDown(29)">{{calendarArray[29]}}</p>
+     
+   </div>
+</td>
+<td>
+  <div id = "calendar">
+      <p id = "calendar-day" [ngStyle]="setStylesDown(30)">{{calendarArray[30]}}</p>
+     
+   </div>
+</td>
+<td>
+  <div id = "calendar">
+      <p id = "calendar-day" [ngStyle]="setStylesDown(31)">{{calendarArray[31]}}</p>
+     
+   </div>
+</td>
+<td>
+  <div id = "calendar">
+      <p id = "calendar-day" [ngStyle]="setStylesDown(32)">{{calendarArray[32]}}</p>
+      
+   </div>
+</td>
+<td>
+  <div id = "calendar">
+      <p id = "calendar-day" [ngStyle]="setStylesDown(33)">{{calendarArray[33]}}</p>
+     
+   </div>
+</td>
+<td>
+  <div id = "calendar" style=' background-color: #5f1e545e'>
+      <p id = "calendar-day" [ngStyle]="setStylesDown(34)">{{calendarArray[34]}}</p>
+      
+   </div>
+</td>
+
+</tr>
+  <tr>
+<td>
+  <div id = "calendar" style=' background-color: #5f1e545e'>
+      <p id = "calendar-day" [ngStyle]="setStylesDown(35)">{{calendarArray[35]}}</p>
+     
+   </div>
+</td>
+<td>
+  <div id = "calendar" >
+      <p id = "calendar-day"  [ngStyle]="setStylesDown(36)">{{calendarArray[36]}}</p>
+     
+   </div>
+</td>
+<td>
+  <div id = "calendar">
+      <p id = "calendar-day"  [ngStyle]="setStylesDown(37)">{{calendarArray[37]}}</p>
+     
+   </div>
+</td>
+<td>
+  <div id = "calendar">
+      <p id = "calendar-day"  [ngStyle]="setStylesDown(38)">{{calendarArray[38]}}</p>
+      
+   </div>
+</td>
+<td>
+  <div id = "calendar">
+      <p id = "calendar-day"  [ngStyle]="setStylesDown(39)">{{calendarArray[39]}}</p>
+     
+   </div>
+</td>
+<td>
+  <div id = "calendar">
+      <p id = "calendar-day"  [ngStyle]="setStylesDown(40)">{{calendarArray[40]}}</p>
+     
+   </div>
+</td>
+<td>
+  <div id = "calendar" style=' background-color: #5f1e545e'>
+      <p id = "calendar-day"  [ngStyle]="setStylesDown(41)">{{calendarArray[41]}}</p>
+     
+   </div>
+</td>
+
+</tr>
+
+</table>
