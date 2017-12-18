@@ -1,5 +1,4 @@
 
-<button mat-button>Click me!</button>
 <table>
   <tr>
   <th>
@@ -33,7 +32,7 @@
 <!-- second table-->
 <table>
 <tr>
-  <th ><button mat-button>
+  <th  ><button mat-button disabled>
       
   <div id = "calendar" style=' background-color: #5f1e545e'  >
      
@@ -43,54 +42,54 @@
 
   </th>
 
-  <th><button mat-button>
+  <th><button mat-button disabled>
    
   <div id = "calendar"  >
   <p id = "calendar-day">{{sevenDays[1]}}</p>
  
   </div></button>
 
-  </th><button mat-button>
+  </th>
 
-  <th><button mat-button>
+  <th><button mat-button disabled>
     <div id = "calendar" >
   <p id = "calendar-day">{{sevenDays[2]}}</p>
   
   </div></button>
   </th>
 
-  <th><button mat-button>
+  <th><button mat-button disabled>
     <div id = "calendar" >
   <p id = "calendar-day">{{sevenDays[3]}}</p>
  
   </div></button>
   </th>
 
-  <th><button mat-button>
+  <th><button mat-button disabled>
     <div id = "calendar" >
   <p id = "calendar-day">{{sevenDays[4]}}</p>
   
   </div></button>
   </th>
 
-  <th><button mat-button>
+  <th><button mat-button disabled>
     <div id = "calendar" >
   <p id = "calendar-day">{{sevenDays[5]}}</p>
   
   </div></button>
   </th>
 
-  <th><button mat-button>
+  <th><button mat-button disabled>
       <div id = "calendar" style=' background-color: #5f1e545e' >
       <p id = "calendar-day">{{sevenDays[6]}}</p>     
-      </div></button>
+      </div> </button>
   </th>
         
 </tr>
 
 <tr>
-<td><button mat-button>
-    <div id = "calendar" style=' background-color: #5f1e545e'  >
+<td><button mat-button >
+    <div id = "calendar" style=' background-color: #5f1e545e'>
         <p style="font-size:10;background-color:#29d40e8e">morning</p>
         <p id = "calendar-day"   [ngStyle]="setStylesUpper(0) ">{{calenderArray[0]}} </p>
        
@@ -104,7 +103,7 @@
         
      </div></button>
 </td>
-<td><button mat-button>
+<td><button mat-button if>
     <div id = "calendar" >
         <p style="font-size:10;background-color:#33aa1d79">morning</p>
         <p id = "calendar-day" [ngStyle]="setStylesUpper(2)">{{calenderArray[2]}}</p>
