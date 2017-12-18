@@ -7,8 +7,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
-
+import {MatCardModule} from '@angular/material/card';
 import { AppComponent } from './app.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import { CalenComponent } from './calen/calen.component';
 import { SalonViewComponent } from './salon-view/salon-view.component';
@@ -28,7 +29,9 @@ import { SalonViewComponent } from './salon-view/salon-view.component';
     ReactiveFormsModule,
     MatSelectModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

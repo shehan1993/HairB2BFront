@@ -1,0 +1,12 @@
+.example-card {
+    width: 400px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPqhgH9QDA4v3wNGxw3JkVa__DZ-_JiZcLXlGh0NGyAXDW9a-XlA');
+    background-size: cover;
+  }
+  
+  mat-grid-tile {
+    background: lightblue;
+  }

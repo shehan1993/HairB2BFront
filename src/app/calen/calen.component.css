@@ -1,23 +1,23 @@
 #calendar{
-    width: 130px;
-    height:180 px;
+    width: 75px;
+    height:50 px;
     background-color: #b8bb13bd;
-    
     color: rgb(133, 88, 88);
     border-radius: 5%;
     box-shadow: 0 4px 4px 0 rgba(50,50,50,.4);
+    
 }
 
 #calendar>p{
     font-family: Verdana, Arial, sans-serif;
-    padding: 10px 0;
+    padding: 3px 0;
     margin: 0;
     color: #fff;
     text-align:center;
 }
 
 #calendar-day{
-    font-size: 36px;
+    font-size: 10px;
 }
 
 #calendar-month-year{
@@ -26,6 +26,14 @@
 
 #calendar-date{
     font-size: 64px;
-    padding-top: 10px;
+    padding-top: 0px;
     padding-bottom: 0px;
+}
+
+#calendar-com{
+   position: relative;
+   top: 200px;
+ 
+  
+  
 }
