@@ -1,0 +1,55 @@
+.image { 
+    position: relative; 
+    width: 100%; /* for IE 6 */
+ }
+ 
+#search-form{
+    position: relative;
+    top:0;
+}
+
+div{
+    position: absolute;
+
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    color: #070101;
+    
+  }
+  
+  .example-full-width {
+    width: 100%;
+    left: 750px;
+    top:100px;
+    background-color: #e9e3e3;
+    -moz-border-radius:10px; /* Firefox */
+    border-radius: 10px;
+   
+
+  }
+  
+  .datePicker-1{
+
+    background-color: #e9e3e3;
+   top: 200px;
+    
+  }
+
+  .datepick{
+    background-color: #ece3e3
+  }
+
+  .example-headers-align .mat-expansion-panel-header-title, 
+  .example-headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+  }
+  
+  .example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+  

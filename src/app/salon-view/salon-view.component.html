@@ -1,11 +1,14 @@
 
  <mat-grid-list cols="12" rowHeight="650px">
+    
  <mat-grid-tile [colspan]=3 [rowspan]=1 >
+  
 <mat-card class="example-card">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+     
+    
+    <mat-card-title> <h2>My Profile</h2><br><h1>Shiba Inu</h1></mat-card-title>
+    
   </mat-card-header>
   <img mat-card-image src="https://www.beautyschoolsdirectory.com/sites/default/files/2017-08/faq-program-hairstylist.jpg" alt="Photo of a Shiba Inu">
   <mat-card-content>
@@ -20,6 +23,8 @@
   </mat-card-actions>
 </mat-card>
 </mat-grid-tile>
+
+
 <mat-grid-tile [colspan]=9 [rowspan]=2 style=" position:absolute;top:8px " >
   <div style="position:relative;left:0px;bottom:200px">
 <app-calen ></app-calen>
@@ -28,6 +33,15 @@
 <mat-grid-tile [colspan]=3 [rowspan]=1>
 Desrciption and skill
 </mat-grid-tile>
+
+
+<mat-grid-tile [colspan]=12 [rowspan]=0.5 style=" position:absolute;top:8px " >
+    <div style="position:relative;left:0px;">
+
+  <app-img-casro ></app-img-casro>
+    </div>
+  </mat-grid-tile>
+
 </mat-grid-list>
 
 

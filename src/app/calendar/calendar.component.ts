@@ -50,7 +50,7 @@ count = 0;
 cal = function(){
 this.count++;
   this.sevenDays[0] = this.year;
-  console.log("okay");
+
   
 }   
 
