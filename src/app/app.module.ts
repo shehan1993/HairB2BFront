@@ -13,13 +13,15 @@ import {MatGridListModule} from '@angular/material/grid-list';
 
 import { CalenComponent } from './calen/calen.component';
 import { SalonViewComponent } from './salon-view/salon-view.component';
+import { ImgCasroComponent } from './img-casro/img-casro.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CalenComponent,
-    SalonViewComponent
+    SalonViewComponent,
+    ImgCasroComponent
   ],
   imports: [
     BrowserModule,
