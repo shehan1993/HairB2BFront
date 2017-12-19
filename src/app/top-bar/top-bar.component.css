@@ -7,3 +7,13 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.expandClass{
+    width: 600px;
+    background-color: #a526446b
+}
+
+
+mat-slider {
+  width: 300px;
+}
