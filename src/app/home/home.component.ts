@@ -63,5 +63,7 @@ export class HomeComponent implements OnInit {
       prevStep() {
         this.step--;
       }
+
+      
   
 }

@@ -20,18 +20,18 @@
     <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Destination
+          Max Price you needed($)
         </mat-panel-title>
         <mat-panel-description>
-          Type the country name
+         
           <mat-icon>map</mat-icon>
         </mat-panel-description>
       </mat-expansion-panel-header>
   
-      <mat-form-field>
-          <mat-slider  min="1" max="5" step="0.5" value="1.5"></mat-slider>
-          
-      </mat-form-field>
+      
+
+      <mat-slider  min="1" max="1000" step="0.5" value="1.5"></mat-slider>
+      
   
       <mat-action-row>
         <button mat-button color="warn" (click)="prevStep()">Previous</button>

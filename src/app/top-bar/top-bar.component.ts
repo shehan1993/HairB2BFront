@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MatFormFieldControl} from '@angular/material/form-field';
+
 import 'hammerjs';
 @Component({
   selector: 'app-top-bar',
@@ -30,4 +31,6 @@ export class TopBarComponent implements OnInit {
     prevStep() {
       this.step--;
     }
+
+    
 }
