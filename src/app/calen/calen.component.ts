@@ -88,10 +88,11 @@ export class CalenComponent implements OnInit {
       
       }  
       
-//set the styles
+//need to give diffrent identity to different dates
 
 //law prioroty for last month and previous month days 
 //if day is day of current month we have to chechk status
+//setStylesUpper() = set the styles for first week of month
 setStylesUpper = function(value){
     value = this.calenderArray[value];
     if(value > 22){
@@ -108,7 +109,7 @@ setStylesUpper = function(value){
      
 }      
 
-//law priority comming months
+//law priority for next months
 //get need date from calender
 setStylesDown = function(value){
   
@@ -124,9 +125,11 @@ setStylesDown = function(value){
   }  
 }
 
+/*
+status for middle three[weeks:1,2,3] (weeks define as [0->5])
+get need dates from calender
+**/
 
-//stautus for middle three[weeks:1,2,3] weeks define as [0->5]
-//get need date from calender
 setStyle = function(value){
   
   value = this.calenderArray[value];
@@ -139,6 +142,10 @@ setStyle = function(value){
 datesOfBusy = BDATES;
 datesOfPend = PDATES;
 
+/*
+busy days, or booked dates indicate in 'red' color,
+pending dates indicate in 'blue' color. 
+*/
 dayStaus = function(y,m,d){
 var lengthOfArray = this.datesOfBusy.length
 

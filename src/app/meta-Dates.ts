@@ -1,6 +1,8 @@
 import {DatesOFBusy} from './dates';
 import {DateOFPendings} from './dates';
 
+//time:0 = morning time slot   
+//time:1 = evening time slot
 export const BDATES: DatesOFBusy[] = [
     {year:2017,month:1,day:1,time:0},
     {year:2017,month:2,day:3,time:0},
