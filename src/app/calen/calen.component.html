@@ -146,7 +146,7 @@
 </tr>
 
 <tr>
-    <td><button mat-button  [disabled]="calenderArray[1]>22">
+    <td><button mat-button  [disabled]="calenderArray[1]>22" (click) = "booking" >
         <div id = "calendar" style=' background-color: #5f1e545e'  >
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"   [ngStyle]="setStylesUpper(1) ">{{calenderArray[1]}}</p>

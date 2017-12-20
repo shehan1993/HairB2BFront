@@ -92,13 +92,14 @@ calendar = function(){
           }      
       
       }  
-      
-//need to give diffrent identity to different dates
+  
+/**      
+need to give diffrent identity to different dates
 
-//law prioroty for last month and previous month days 
-//if day is current month day or not we have to check we have to check.
-//setStylesUpper() = set the styles for first week of month
-
+law prioroty for last month and previous month days 
+if day is current month day or not, we have to check.
+setStylesUpper() = set the styles for first week of month
+**/
 
 setStylesUpper = function(value){
    var slot:number = value%2;  
@@ -119,7 +120,7 @@ setStylesUpper = function(value){
 }      
 
 //law priority for next months
-//get need date from calender
+
 setStylesDown = function(value){
   var slot:number = value%2;  
   
@@ -137,8 +138,9 @@ setStylesDown = function(value){
 /*
 status for middle three[weeks:1,2,3] (weeks define as [0->5])
 get need dates from calender
+
+setStyle function call from .html
 **/
-//setStyle function call from .html
 setStyle = function(value){
   var slot:number = value%2;  
   value = this.calenderArray[value];
@@ -186,14 +188,7 @@ if(this.datesOfPend[i].year == y && this.datesOfPend[i].month == m){
   }
 }
 
-
-
-
 }
-
-
-
-
 
   constructor() { }
 
