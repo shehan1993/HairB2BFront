@@ -25,6 +25,7 @@ import { SalonViewComponent } from './salon-view/salon-view.component';
 import { ImgCasroComponent } from './img-casro/img-casro.component';
 import { HomeComponent } from './home/home.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     MatNativeDateModule,
     MatSliderModule,
     MatFormFieldModule,
+    AppRoutingModule,
     
   ],
   providers: [],
