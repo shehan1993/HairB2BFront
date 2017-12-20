@@ -48,17 +48,19 @@ export class CalenComponent implements OnInit {
   year:number;
   month:number;
 
-//0-41 days array (6 weeks in month with privious last week and next month first week)
+//0-41 days array (6 weeks in month with privious month last week and next month first week)
   calenderArray = [];
   
-//return no of dates in a month  
+//return numbers of dates in a month  
     daysInMonth = function (month,year) {
       return new Date(year, month+1, 0).getDate();    
     }
   
-
-//generate calendarArray according user argument year and month
-    calendar = function(){
+/*
+*generate calendarArray according user arguments year and month
+*in calendar array ,calendarAray[value] ,if value%2 == 0 then morning slot othervise evening slot  
+*/
+calendar = function(){
       
           var date = new Date(this.year,this.month,1);
           var day = date.getDay();
@@ -68,21 +70,24 @@ export class CalenComponent implements OnInit {
       
           var j =0;
           for(var i=day;i>0;i--){
-             this.calenderArray[j] = lastMonthNoOfdays-i+1;   
-             j++;
+             this.calenderArray[j] = lastMonthNoOfdays-i+1;
+             this.calenderArray[j+1] =  this.calenderArray[j];  
+             j += 2;
                           
           }
       
           for( i=0;i<thisMonthNoOfdays;i++){
-            this.calenderArray[j] = i+1;   
-            j++;
+            this.calenderArray[j] = i+1;
+            this.calenderArray[j+1] =  this.calenderArray[j];     
+            j += 2;
                
           }
       
           var remain = 1;
-          while(j< 43){
+          while(j< 84){
             this.calenderArray[j] = remain;
-            j++;
+            this.calenderArray[j+1] =  this.calenderArray[j];  
+            j +=2;
             remain++;
           }      
       
@@ -91,20 +96,24 @@ export class CalenComponent implements OnInit {
 //need to give diffrent identity to different dates
 
 //law prioroty for last month and previous month days 
-//if day is day of current month we have to chechk status
+//if day is current month day or not we have to check we have to check.
 //setStylesUpper() = set the styles for first week of month
+
+
 setStylesUpper = function(value){
+   var slot:number = value%2;  
+
     value = this.calenderArray[value];
     if(value > 22){
     let styles = {
-   'background-color':'#000000'    
+   'background-color':'#000000'//black color    
    };
    return styles;
   };
 
 
   if(value >= 1 && value <= 7){
-    return this.dayStaus(this.year,this.month,value);
+    return this.dayStaus(this.year,this.month,value,slot);
   }
      
 }      
@@ -112,7 +121,7 @@ setStylesUpper = function(value){
 //law priority for next months
 //get need date from calender
 setStylesDown = function(value){
-  
+  var slot:number = value%2;  
   
     value = this.calenderArray[value];
     if(value <15){
@@ -121,7 +130,7 @@ setStylesDown = function(value){
    };
    return styles;
   }else{
-    return this.dayStaus(this.year,this.month,value);
+    return this.dayStaus(this.year,this.month,value,slot);
   }  
 }
 
@@ -129,11 +138,11 @@ setStylesDown = function(value){
 status for middle three[weeks:1,2,3] (weeks define as [0->5])
 get need dates from calender
 **/
-
+//setStyle function call from .html
 setStyle = function(value){
-  
+  var slot:number = value%2;  
   value = this.calenderArray[value];
-  return this.dayStaus(this.year,this.month,value);
+  return this.dayStaus(this.year,this.month,value,slot);
 
 }
 
@@ -146,18 +155,20 @@ datesOfPend = PDATES;
 busy days, or booked dates indicate in 'red' color,
 pending dates indicate in 'blue' color. 
 */
-dayStaus = function(y,m,d){
+dayStaus = function(y,m,d,s){
 var lengthOfArray = this.datesOfBusy.length
 
-for(var i =0;i< lengthOfArray;i++){
+for(var i = 0;i< lengthOfArray;i++){
 if(this.datesOfBusy[i].year == y && this.datesOfBusy[i].month == m){
+  
 
-    if(this.datesOfBusy[i].day == d){
+    if(this.datesOfBusy[i].day == d && this.datesOfBusy[i].time == s){
       let styles = {
         'background-color':'#ff0000ea' //red color   
         }; 
         return styles;
     }
+ 
   }
 }
 
@@ -166,7 +177,7 @@ var lengthOfArray = this.datesOfPend.length
 for(var i =0;i< lengthOfArray;i++){
 if(this.datesOfPend[i].year == y && this.datesOfPend[i].month == m){
 
-    if(this.datesOfPend[i].day == d){
+    if(this.datesOfPend[i].day == d && this.datesOfBusy[i].time == s){
       let styles = {
         'background-color':'#132cbbec' //blue color   
         }; 
