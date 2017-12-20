@@ -1,4 +1,8 @@
 
+    
+
+
+
 
 <div id = "calendar-com">
         <h1>CALENDAR</h1>
@@ -8,7 +12,7 @@
   <th>
 <mat-form-field >
   
-  <mat-select placeholder="Year" [(ngModel)]="year"  style='font-size:25px'>
+  <mat-select placeholder="Year" [(ngModel)]="year"  style='font-size:25px' (click)=selectedDate(0)>
     <mat-option *ngFor="let y of years"  [value]="y.value" (click) ="calendar()" >        
       {{ y.viewValue }}
     </mat-option>
@@ -92,7 +96,7 @@
 </tr>
 
 <tr>
-<td><button mat-button [disabled]="calenderArray[0]>22">
+<td><button mat-button [disabled]="calenderArray[0]>22" (click) = "selectedDate(0)" >
     <div id = "calendar" style=' background-color: #5f1e545e'>
         <p style="font-size:10;background-color:#29d40e8e">morning</p>
         <p id = "calendar-day"   [ngStyle]="setStylesUpper(0) ">{{calenderArray[0]}} </p>
@@ -788,3 +792,6 @@
   </table>
 </div>
 
+<tr *ngFor="let a of selectedArray">
+    {{a}}
+     </tr>

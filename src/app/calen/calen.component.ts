@@ -139,7 +139,7 @@ setStylesDown = function(value){
 status for middle three[weeks:1,2,3] (weeks define as [0->5])
 get need dates from calender
 
-setStyle function call from .html
+setStyle() function call from .html
 **/
 setStyle = function(value){
   var slot:number = value%2;  
@@ -190,11 +190,20 @@ if(this.datesOfPend[i].year == y && this.datesOfPend[i].month == m){
 
 }
 
+selectedArray = [1,2,3,4];
+
+ i = 0;
+selectedDate =  function(value){
+this.selectedArray[this.i] = value;
+this.i++;
+}
+
   constructor() { }
 
   ngOnInit() {
-    this.year = 2017;
-    this.month = 1; 
+    
+    this.year = new Date().getFullYear();
+    this.month = new Date().getMonth() ; 
     this.calendar();
   }
 
