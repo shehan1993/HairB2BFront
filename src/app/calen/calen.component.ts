@@ -14,6 +14,7 @@ export class CalenComponent implements OnInit {
 
   //years in view
   years = [
+    {value: 2016, viewValue: '2016'},
     {value: 2017, viewValue: '2017'},
     {value: 2018, viewValue: '2018'},
     {value: 2019, viewValue: '2019'},
@@ -23,6 +24,7 @@ export class CalenComponent implements OnInit {
     {value: 2023, viewValue: '2023'},
     {value: 2024, viewValue: '2024'},
     {value: 2025, viewValue: '2025'}
+    
   ];
 
 //month in view
@@ -44,9 +46,16 @@ export class CalenComponent implements OnInit {
 
   //Days in view
   sevenDays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+/**
+ * these are relative
+ * year is  calender viewing year
+ * month is calender viewing month
+ * but today is alway correct date 
+ */
 
   year:number;
   month:number;
+  today:number;
 
 /*0-41 days array (6 weeks in month with privious month last week and next month first week)
 *all days have two slots morning and evening
@@ -195,7 +204,7 @@ if(this.datesOfPend[i].year == y && this.datesOfPend[i].month == m){
 
 /**
  * salons can book the stylists by clicking on the  day(morning slot or evening slot)
- * myBookings[] store the (year, month, day, time, slot) salons cliking 
+ * myBookings[] store the (year, month, day, time, slot) salons clicking 
  */
 
 myBookings = [];
@@ -210,12 +219,56 @@ this.myBookings[this.numberOfBookings] = bookingDescription;
 this.numberOfBookings++;
 }
 
+/**
+ * salon can click past days and today for bookings, this 
+ * bookings can be disable by disableButton() function
+ * 
+ * salon get view previous month and next month few dates or weeks
+ * that dates can be disble by disableButton() function
+ * 
+ * if time slot is busy, need to disable it 
+ */
+
+disableButton = function(value){
+
+  if(value < 14 && this.calenderArray[value] > 7){
+
+    return true;
+    
+  }else if(value > 55 && this.calenderArray[value] < 15 ){
+
+    return true;
+
+  }else{
+
+  var presentYear = new Date().getFullYear();
+  var presentMonth = new Date().getMonth();
+  
+  if(this.year < presentYear){
+    return true;
+  }else if(this.year == presentYear){
+    if( this.month < presentMonth){
+      return true;
+    }else if(this.month == presentMonth){
+      if(this.calenderArray[value] <= this.today){
+        return true;
+      }
+    }
+  }
+}
+
+}
+
+
+ 
+
   constructor() { }
 
   ngOnInit() {
     
     this.year = new Date().getFullYear();
     this.month = new Date().getMonth() ; 
+    this.today = new Date().getDate();
     this.calendar();
   }
 
