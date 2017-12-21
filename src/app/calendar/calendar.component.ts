@@ -46,6 +46,7 @@ export class CalendarComponent implements OnInit {
 year:number;
 month:number;
 //here month is 0-11(jan=0,dec=11)
+
 count = 0;
 cal = function(){
 this.count++;

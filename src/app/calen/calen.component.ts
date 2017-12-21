@@ -48,7 +48,10 @@ export class CalenComponent implements OnInit {
   year:number;
   month:number;
 
-//0-41 days array (6 weeks in month with privious month last week and next month first week)
+/*0-41 days array (6 weeks in month with privious month last week and next month first week)
+*all days have two slots morning and evening
+*calender array length should be 82
+*/
   calenderArray = [];
   
 //return numbers of dates in a month  
@@ -190,12 +193,21 @@ if(this.datesOfPend[i].year == y && this.datesOfPend[i].month == m){
 
 }
 
-selectedArray = [1,2,3,4];
+/**
+ * salons can book the stylists by clicking on the  day(morning slot or evening slot)
+ * myBookings[] store the (year, month, day, time, slot) salons cliking 
+ */
 
- i = 0;
+myBookings = [];
+numberOfBookings = 0;
+
 selectedDate =  function(value){
-this.selectedArray[this.i] = value;
-this.i++;
+  var bookingDescription;
+  var timeSlot = (value % 2 == 0?"morning":"evening");
+  
+  bookingDescription = "I want to book: " + this.year + " " +  this.months[this.month].viewValue + " " + this.calenderArray[value] +" - " + timeSlot;
+this.myBookings[this.numberOfBookings] = bookingDescription;
+this.numberOfBookings++;
 }
 
   constructor() { }

@@ -1,18 +1,16 @@
 
     
-
-
-
-
 <div id = "calendar-com">
         <h1>CALENDAR</h1>
-        <h2>working</h2>
+        <tr *ngFor="let a of myBookings">
+            {{a}}
+        </tr>
 <table>
   <tr>
   <th>
 <mat-form-field >
   
-  <mat-select placeholder="Year" [(ngModel)]="year"  style='font-size:25px' (click)=selectedDate(0)>
+  <mat-select placeholder="Year" [(ngModel)]="year"  style='font-size:25px'>
     <mat-option *ngFor="let y of years"  [value]="y.value" (click) ="calendar()" >        
       {{ y.viewValue }}
     </mat-option>
@@ -104,35 +102,35 @@
      </div>
     </button>
 </td>
-<td><button mat-button  [disabled]="calenderArray[2]>22">
+<td><button mat-button  [disabled]="calenderArray[2]>22" (click) = "selectedDate(2)" >
     <div id = "calendar" >
         <p style="font-size:10;background-color:#33aa1d79">morning</p>
         <p id = "calendar-day"[ngStyle]="setStylesUpper(2)" >{{calenderArray[2]}}</p>
         
      </div></button>
 </td>
-<td><button mat-button  [disabled]="calenderArray[4]>22">
+<td><button mat-button  [disabled]="calenderArray[4]>22" (click) = "selectedDate(4)">
     <div id = "calendar" >
         <p style="font-size:10;background-color:#33aa1d79">morning</p>
         <p id = "calendar-day" [ngStyle]="setStylesUpper(4)">{{calenderArray[4]}}</p>
         
      </div></button>
 </td>
-<td><button mat-button  [disabled]="calenderArray[6]>22">
+<td><button mat-button  [disabled]="calenderArray[6]>22" (click) = "selectedDate(6)">
     <div id = "calendar" >
         <p style="font-size:10;background-color:#33aa1d79">morning</p>
         <p id = "calendar-day" [ngStyle]="setStylesUpper(6)">{{calenderArray[6]}}</p>
         
      </div></button>
 </td>
-<td><button mat-button  [disabled]="calenderArray[8]>22">
+<td><button mat-button  [disabled]="calenderArray[8]>22" (click) = "selectedDate(8)">
     <div id = "calendar" >
         <p style="font-size:10;background-color:#33aa1d79">morning</p>
         <p id = "calendar-day" [ngStyle]="setStylesUpper(8)">{{calenderArray[8]}}</p>
        
      </div></button>
 </td>
-<td><button mat-button  [disabled]="calenderArray[10]>22">
+<td><button mat-button  [disabled]="calenderArray[10]>22" (click) = "selectedDate(10)">
     <div id = "calendar">
         <p style="font-size:10;background-color:#33aa1d79">morning</p>
         <p id = "calendar-day" [ngStyle]="setStylesUpper(10)">{{calenderArray[10]}}</p>
@@ -140,7 +138,7 @@
      </div></button>
 </td>
 <td><button mat-button >
-    <div id = "calendar"style=' background-color: #5f1e545e'>
+    <div id = "calendar"style=' background-color: #5f1e545e' (click) = "selectedDate(12)">
         <p style="font-size:10;background-color:#29d40e8e">morning</p>
         <p id = "calendar-day"[ngStyle]="setStylesUpper(12)">{{calenderArray[12]}}</p>
         
@@ -150,7 +148,7 @@
 </tr>
 
 <tr>
-    <td><button mat-button  [disabled]="calenderArray[1]>22" (click) = "booking" >
+    <td><button mat-button  [disabled]="calenderArray[1]>22" (click) = "booking"  (click) = "selectedDate(1)">
         <div id = "calendar" style=' background-color: #5f1e545e'  >
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"   [ngStyle]="setStylesUpper(1) ">{{calenderArray[1]}}</p>
@@ -158,42 +156,42 @@
          </div></button>
         
     </td>
-    <td><button mat-button  [disabled]="calenderArray[3]>22">
+    <td><button mat-button  [disabled]="calenderArray[3]>22" (click) = "selectedDate(3)">
         <div id = "calendar" >
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"[ngStyle]="setStylesUpper(3)" >{{calenderArray[3]}}</p>
             
          </div></button>
     </td>
-    <td><button mat-button  [disabled]="calenderArray[5]>22">
+    <td><button mat-button  [disabled]="calenderArray[5]>22" (click) = "selectedDate(5)">
         <div id = "calendar" >
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day" [ngStyle]="setStylesUpper(5)">{{calenderArray[5]}}</p>
             
          </div></button>
     </td>
-    <td><button mat-button  [disabled]="calenderArray[7]>22">
+    <td><button mat-button  [disabled]="calenderArray[7]>22" (click) = "selectedDate(7)">
         <div id = "calendar" >
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day" [ngStyle]="setStylesUpper(7)">{{calenderArray[7]}}</p>
             
          </div></button>
     </td>
-    <td><button mat-button  [disabled]="calenderArray[9]>22">
+    <td><button mat-button  [disabled]="calenderArray[9]>22" (click) = "selectedDate(9)">
         <div id = "calendar" >
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day" [ngStyle]="setStylesUpper(9)">{{calenderArray[9]}}</p>
            
          </div></button>
     </td>
-    <td><button mat-button  [disabled]="calenderArray[11]>22">
+    <td><button mat-button  [disabled]="calenderArray[11]>22" (click) = "selectedDate(11)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day" [ngStyle]="setStylesUpper(11)">{{calenderArray[11]}}</p>
           
          </div></button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(13)">
         <div id = "calendar"style=' background-color: #5f1e545e'>
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"[ngStyle]="setStylesUpper(13)">{{calenderArray[13]}}</p>
@@ -204,28 +202,28 @@
     </tr>
 
 <tr>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(14)">
         <div id = "calendar"style=' background-color: #5f1e545e'>
             <p style="font-size:10;background-color:#29d40e8e">morning</p>
             <p id = "calendar-day" [ngStyle]="setStyle(14)">{{calenderArray[14]}}</p>
             
          </div></button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(16)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#33aa1d79">morning</p>
             <p id = "calendar-day" [ngStyle]="setStyle(16)">{{calenderArray[16]}}</p>
             
          </div></button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(18)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#33aa1d79">morning</p>
             <p id = "calendar-day" [ngStyle]="setStyle(18)">{{calenderArray[18]}}</p>
             
          </div></button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(20)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#33aa1d79">morning</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(20)">{{calenderArray[20]}}</p>
@@ -233,21 +231,21 @@
          </div></button>
          
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(22)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#33aa1d79">morning</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(22)">{{calenderArray[22]}}</p>
            
          </div></button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(24)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#33aa1d79">morning</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(24)">{{calenderArray[24]}}</p>
             
          </div></button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(26)">
         <div id = "calendar" style=' background-color: #5f1e545e'>
             <p style="font-size:10;background-color:#29d40e8e">morning</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(26)" >{{calenderArray[26]}}</p>
@@ -258,28 +256,28 @@
 
 
 <tr>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(15)">
         <div id = "calendar"style=' background-color: #5f1e545e'>
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day" [ngStyle]="setStyle(15)">{{calenderArray[15]}}</p>
             
          </div></button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(17)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day" [ngStyle]="setStyle(17)">{{calenderArray[17]}}</p>
             
          </div></button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(19)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day" [ngStyle]="setStyle(19)">{{calenderArray[19]}}</p>
             
          </div></button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(21)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(21)">{{calenderArray[21]}}</p>
@@ -287,21 +285,21 @@
          </div></button>
          
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(23)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(23)">{{calenderArray[23]}}</p>
            
          </div></button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(25)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(25)">{{calenderArray[25]}}</p>
             
          </div></button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(27)">
         <div id = "calendar" style=' background-color: #5f1e545e'>
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(27)" >{{calenderArray[27]}}</p>
@@ -311,49 +309,49 @@
 </tr>
 
 <tr>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(28)">
         <div id = "calendar" style=' background-color: #5f1e545e'>
             <p style="font-size:10;background-color:#29d40e8e">morning</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(28)" >{{calenderArray[28]}}</p>
             
           </div></button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(30)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#33aa1d79">morning</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(30)">{{calenderArray[30]}}</p>
            
          </div></button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(32)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#33aa1d79">morning</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(32)">{{calenderArray[32]}}</p>
             
           </div></button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(34)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#33aa1d79">morning</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(34)">{{calenderArray[34]}}</p>
            
           </div></button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(36)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#33aa1d79">morning</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(36)">{{calenderArray[36]}}</p>
             
           </div></button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(38)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#33aa1d79">morning</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(38)">{{calenderArray[38]}}</p>
             
           </div></button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(40)">
         <div id = "calendar"style=' background-color: #5f1e545e'>
             <p style="font-size:10;background-color:#29d40e8e">morning</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(40)">{{calenderArray[40]}}</p>
@@ -365,7 +363,7 @@
 </tr>
 
 <tr>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(29)">
         <div id = "calendar" style=' background-color: #5f1e545e'>
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(29)" >{{calenderArray[29]}}</p>
@@ -373,7 +371,7 @@
           </div>
         </button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(31)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(31)">{{calenderArray[31]}}</p>
@@ -381,7 +379,7 @@
          </div>
         </button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(33)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(33)">{{calenderArray[33]}}</p>
@@ -389,7 +387,7 @@
           </div>
         </button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(35)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(35)">{{calenderArray[35]}}</p>
@@ -397,7 +395,7 @@
           </div>
         </button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(37)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(37)">{{calenderArray[37]}}</p>
@@ -405,7 +403,7 @@
           </div>
         </button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(39)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(39)">{{calenderArray[39]}}</p>
@@ -413,7 +411,7 @@
           </div>
         </button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(41)">
         <div id = "calendar"style=' background-color: #5f1e545e'>
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(41)">{{calenderArray[41]}}</p>
@@ -426,7 +424,7 @@
 
 
 <tr>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(42)">
         <div id = "calendar" style=' background-color: #5f1e545e'>
             <p style="font-size:10;background-color:#29d40e8e">morning</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(42)">{{calenderArray[42]}}</p>
@@ -434,7 +432,7 @@
           </div>
         </button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(44)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#33aa1d79">morning</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(44)">{{calenderArray[44]}}</p>
@@ -442,7 +440,7 @@
          </div>
         </button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(46)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#33aa1d79">morning</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(46)">{{calenderArray[46]}}</p>
@@ -450,7 +448,7 @@
           </div>
         </button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(48)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#33aa1d79">morning</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(48)">{{calenderArray[48]}}</p>
@@ -458,7 +456,7 @@
           </div>
         </button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(50)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#33aa1d79">morning</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(50)">{{calenderArray[50]}}</p>
@@ -466,7 +464,7 @@
           </div>
         </button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(52)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#33aa1d79">morning</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(52)">{{calenderArray[52]}}</p>
@@ -474,7 +472,7 @@
           </div>
         </button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(54)">
         <div id = "calendar" style=' background-color: #5f1e545e'>
             <p style="font-size:10;background-color:#29d40e8e">morning</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(54)">{{calenderArray[54]}}</p>
@@ -487,7 +485,7 @@
 
 
 <tr>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(43)">
         <div id = "calendar" style=' background-color: #5f1e545e'>
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(43)">{{calenderArray[43]}}</p>
@@ -495,7 +493,7 @@
           </div>
         </button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(45)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(45)">{{calenderArray[45]}}</p>
@@ -503,7 +501,7 @@
          </div>
         </button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(47)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(47)">{{calenderArray[47]}}</p>
@@ -511,7 +509,7 @@
           </div>
         </button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(49)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(49)">{{calenderArray[49]}}</p>
@@ -519,7 +517,7 @@
           </div>
         </button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(51)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(51)">{{calenderArray[51]}}</p>
@@ -527,7 +525,7 @@
           </div>
         </button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(53)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(53)">{{calenderArray[53]}}</p>
@@ -535,7 +533,7 @@
           </div>
         </button>
     </td>
-    <td><button mat-button>
+    <td><button mat-button (click) = "selectedDate(55)">
         <div id = "calendar" style=' background-color: #5f1e545e'>
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStyle(55)">{{calenderArray[55]}}</p>
@@ -547,7 +545,7 @@
   </tr>
 
 <tr>
-<td><button mat-button [disabled]="calenderArray[56]<15">
+<td><button mat-button [disabled]="calenderArray[56]<15" (click) = "selectedDate(56)">
     <div id = "calendar" style=' background-color: #5f1e545e'>
         <p style="font-size:10;background-color:#29d40e8e">morning</p>
         <p id = "calendar-day" [ngStyle]="setStylesDown(56)">{{calenderArray[56]}}</p>
@@ -555,7 +553,7 @@
      </div>
     </button>
 </td>
-<td><button mat-button [disabled]="calenderArray[58]<15">
+<td><button mat-button [disabled]="calenderArray[58]<15" (click) = "selectedDate(58)">
     <div id = "calendar">
         <p style="font-size:10;background-color:#33aa1d79">morning</p>
         <p id = "calendar-day" [ngStyle]="setStylesDown(58)">{{calenderArray[58]}}</p>
@@ -563,7 +561,7 @@
      </div>
     </button>
 </td>
-<td><button mat-button [disabled]="calenderArray[60]<15">
+<td><button mat-button [disabled]="calenderArray[60]<15" (click) = "selectedDate(60)">
     <div id = "calendar">
         <p style="font-size:10;background-color:#33aa1d79">morning</p>
         <p id = "calendar-day" [ngStyle]="setStylesDown(60)">{{calenderArray[60]}}</p>
@@ -571,7 +569,7 @@
      </div>
     </button>
 </td>
-<td><button mat-button [disabled]="calenderArray[62]<15">
+<td><button mat-button [disabled]="calenderArray[62]<15" (click) = "selectedDate(62)">
     <div id = "calendar">
         <p style="font-size:10;background-color:#33aa1d79">morning</p>
         <p id = "calendar-day" [ngStyle]="setStylesDown(62)">{{calenderArray[62]}}</p>
@@ -579,7 +577,7 @@
      </div>
     </button>
 </td>
-<td><button mat-button [disabled]="calenderArray[64]<15">
+<td><button mat-button [disabled]="calenderArray[64]<15" (click) = "selectedDate(64)">
     <div id = "calendar">
         <p style="font-size:10;background-color:#33aa1d79">morning</p>
         <p id = "calendar-day" [ngStyle]="setStylesDown(64)">{{calenderArray[64]}}</p>
@@ -587,7 +585,7 @@
      </div>
     </button>
 </td>
-<td><button mat-button [disabled]="calenderArray[66]<15">
+<td><button mat-button [disabled]="calenderArray[66]<15" (click) = "selectedDate(66)">
     <div id = "calendar">
         <p style="font-size:10;background-color:#33aa1d79">morning</p>
         <p id = "calendar-day" [ngStyle]="setStylesDown(66)">{{calenderArray[66]}}</p>
@@ -595,7 +593,7 @@
      </div>
     </button>
 </td>
-<td><button mat-button [disabled]="calenderArray[68]<15">
+<td><button mat-button [disabled]="calenderArray[68]<15" (click) = "selectedDate(68)">
     <div id = "calendar" style=' background-color: #5f1e545e'>
         <p style="font-size:10;background-color:#29d40e8e">morning</p>
         <p id = "calendar-day" [ngStyle]="setStylesDown(68)">{{calenderArray[68]}}</p>
@@ -608,7 +606,7 @@
 
 
 <tr>
-    <td><button mat-button [disabled]="calenderArray[57]<15">
+    <td><button mat-button [disabled]="calenderArray[57]<15" (click) = "selectedDate(57)">
         <div id = "calendar" style=' background-color: #5f1e545e'>
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day" [ngStyle]="setStylesDown(57)">{{calenderArray[57]}}</p>
@@ -616,7 +614,7 @@
          </div>
         </button>
     </td>
-    <td><button mat-button [disabled]="calenderArray[59]<15">
+    <td><button mat-button [disabled]="calenderArray[59]<15" (click) = "selectedDate(59)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day" [ngStyle]="setStylesDown(59)">{{calenderArray[59]}}</p>
@@ -624,7 +622,7 @@
          </div>
         </button>
     </td>
-    <td><button mat-button [disabled]="calenderArray[61]<15">
+    <td><button mat-button [disabled]="calenderArray[61]<15"(click) = "selectedDate(61)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day" [ngStyle]="setStylesDown(61)">{{calenderArray[61]}}</p>
@@ -632,7 +630,7 @@
          </div>
         </button>
     </td>
-    <td><button mat-button [disabled]="calenderArray[63]<15">
+    <td><button mat-button [disabled]="calenderArray[63]<15" (click) = "selectedDate(63)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day" [ngStyle]="setStylesDown(63)">{{calenderArray[63]}}</p>
@@ -640,7 +638,7 @@
          </div>
         </button>
     </td>
-    <td><button mat-button [disabled]="calenderArray[65]<15">
+    <td><button mat-button [disabled]="calenderArray[65]<15" (click) = "selectedDate(65)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day" [ngStyle]="setStylesDown(65)">{{calenderArray[65]}}</p>
@@ -648,7 +646,7 @@
          </div>
         </button>
     </td>
-    <td><button mat-button [disabled]="calenderArray[67]<15">
+    <td><button mat-button [disabled]="calenderArray[67]<15" (click) = "selectedDate(67)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day" [ngStyle]="setStylesDown(67)">{{calenderArray[67]}}</p>
@@ -656,7 +654,7 @@
          </div>
         </button>
     </td>
-    <td><button mat-button [disabled]="calenderArray[69]<15">
+    <td><button mat-button [disabled]="calenderArray[69]<15" (click) = "selectedDate(69)">
         <div id = "calendar" style=' background-color: #5f1e545e'>
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day" [ngStyle]="setStylesDown(69)">{{calenderArray[69]}}</p>
@@ -669,7 +667,7 @@
 
 
   <tr>
-<td><button mat-button [disabled]="calenderArray[70]<15">
+<td><button mat-button [disabled]="calenderArray[70]<15" (click) = "selectedDate(70)">
     <div id = "calendar" style=' background-color: #5f1e545e'>
         <p style="font-size:10;background-color:#29d40e8e">morning</p>
         <p id = "calendar-day" [ngStyle]="setStylesDown(70)">{{calenderArray[70]}}</p>
@@ -677,7 +675,7 @@
      </div>
     </button>
 </td>
-<td><button mat-button [disabled]="calenderArray[72]<15">
+<td><button mat-button [disabled]="calenderArray[72]<15" (click) = "selectedDate(72)">
     <div id = "calendar" >
         <p style="font-size:10;background-color:#33aa1d79">morning</p>
         <p id = "calendar-day"  [ngStyle]="setStylesDown(72)">{{calenderArray[72]}}</p>
@@ -685,7 +683,7 @@
      </div>
     </button>
 </td>
-<td><button mat-button [disabled]="calenderArray[74]<15">
+<td><button mat-button [disabled]="calenderArray[74]<15" (click) = "selectedDate(74)">
     <div id = "calendar">
         <p style="font-size:10;background-color:#33aa1d79">morning</p>
         <p id = "calendar-day"  [ngStyle]="setStylesDown(74)">{{calenderArray[74]}}</p>
@@ -693,7 +691,7 @@
      </div>
     </button>
 </td>
-<td><button mat-button  [disabled]="calenderArray[76]<15">
+<td><button mat-button  [disabled]="calenderArray[76]<15" (click) = "selectedDate(76)">
     <div id = "calendar">
         <p style="font-size:10;background-color:#33aa1d79">morning</p>
         <p id = "calendar-day"  [ngStyle]="setStylesDown(76)">{{calenderArray[76]}}</p>
@@ -701,7 +699,7 @@
      </div>
     </button>
 </td>
-<td><button mat-button  [disabled]="calenderArray[78]<15">
+<td><button mat-button  [disabled]="calenderArray[78]<15" (click) = "selectedDate(78)">
     <div id = "calendar">
         <p style="font-size:10;background-color:#33aa1d79">morning</p>
         <p id = "calendar-day"  [ngStyle]="setStylesDown(78)">{{calenderArray[78]}}</p>
@@ -709,7 +707,7 @@
      </div>
     </button>
 </td>
-<td><button mat-button  [disabled]="calenderArray[80]<15">
+<td><button mat-button  [disabled]="calenderArray[80]<15" (click) = "selectedDate(80)">
     <div id = "calendar">
         <p style="font-size:10;background-color:#33aa1d79">morning</p>
         <p id = "calendar-day"  [ngStyle]="setStylesDown(80)">{{calenderArray[80]}}</p>
@@ -717,7 +715,7 @@
      </div>
     </button>
 </td>
-<td><button mat-button  [disabled]="calenderArray[82]<15">
+<td><button mat-button  [disabled]="calenderArray[82]<15" (click) = "selectedDate(80)">
     <div id = "calendar" style=' background-color: #5f1e545e'>
         <p style="font-size:10;background-color:#29d40e8e">morning</p>
         <p id = "calendar-day"  [ngStyle]="setStylesDown(82)">{{calenderArray[82]}}</p>
@@ -730,7 +728,7 @@
 
   
 <tr>
-    <td><button mat-button  [disabled]="calenderArray[71]<15">
+    <td><button mat-button  [disabled]="calenderArray[71]<15" (click) = "selectedDate(71)">
         <div id = "calendar" style=' background-color: #5f1e545e'>
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day" [ngStyle]="setStylesDown(71)">{{calenderArray[71]}}</p>
@@ -738,7 +736,7 @@
          </div>
         </button>
     </td>
-    <td><button mat-button  [disabled]="calenderArray[73]<15">
+    <td><button mat-button  [disabled]="calenderArray[73]<15" (click) = "selectedDate(73)">
         <div id = "calendar" >
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStylesDown(73)">{{calenderArray[73]}}</p>
@@ -746,7 +744,7 @@
          </div>
         </button>
     </td>
-    <td><button mat-button  [disabled]="calenderArray[75]<15">
+    <td><button mat-button  [disabled]="calenderArray[75]<15" (click) = "selectedDate(75)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStylesDown(75)">{{calenderArray[75]}}</p>
@@ -754,7 +752,7 @@
          </div>
         </button>
     </td>
-    <td><button mat-button  [disabled]="calenderArray[77]<15">
+    <td><button mat-button  [disabled]="calenderArray[77]<15" (click) = "selectedDate(77)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStylesDown(77)">{{calenderArray[77]}}</p>
@@ -762,7 +760,7 @@
          </div>
         </button>
     </td>
-    <td><button mat-button  [disabled]="calenderArray[79]<15">
+    <td><button mat-button  [disabled]="calenderArray[79]<15" (click) = "selectedDate(79)">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStylesDown(79)">{{calenderArray[79]}}</p>
@@ -770,7 +768,7 @@
          </div>
         </button>
     </td>
-    <td><button mat-button  [disabled]="calenderArray[81]<15">
+    <td><button mat-button  [disabled]="calenderArray[81]<15" (click) = "selectedDate81()">
         <div id = "calendar">
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStylesDown(81)">{{calenderArray[81]}}</p>
@@ -778,7 +776,7 @@
          </div>
         </button>
     </td>
-    <td><button mat-button  [disabled]="calenderArray[83]<15">
+    <td><button mat-button  [disabled]="calenderArray[83]<15" (click) = "selectedDate(83)">
         <div id = "calendar" style=' background-color: #5f1e545e'>
             <p style="font-size:10;background-color:#9c49228e">evening</p>
             <p id = "calendar-day"  [ngStyle]="setStylesDown(83)">{{calenderArray[83]}}</p>
@@ -792,6 +790,3 @@
   </table>
 </div>
 
-<tr *ngFor="let a of selectedArray">
-    {{a}}
-     </tr>
