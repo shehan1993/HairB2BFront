@@ -1,4 +1,4 @@
-
+<div>
     
 <div id = "calendar-com">
         <h1>CALENDAR</h1>
@@ -788,8 +788,13 @@
   </table>
 </div>
 
-<div id = "booking-details" >
-<tr *ngFor="let a of myBookings">
-    {{a}}
-</tr>
+
+<div id = "main">
+<ul >
+    <li *ngFor = "let i of myBookings">
+        {{i}}
+        <span (click)="remove()" >X</span>
+    </li>
+</ul>
+</div>
 </div>

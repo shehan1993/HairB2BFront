@@ -214,7 +214,7 @@ selectedDate =  function(value){
   var bookingDescription;
   var timeSlot = (value % 2 == 0 ? "morning":"evening");
   
-  bookingDescription = "I want to book: " + this.year + " " +  this.months[this.month].viewValue + " " + this.calenderArray[value] +" - " + timeSlot;
+  bookingDescription = this.year + "/" +  this.months[this.month].viewValue + "/" + this.calenderArray[value] +" - " + timeSlot;
 this.myBookings[this.numberOfBookings] = bookingDescription;
 this.numberOfBookings++;
 
@@ -265,9 +265,11 @@ disableButton = function(value){
 
 }
 
+items = ["acda","sfas","cde","cdc","wwwwwwa"];
 
-
- 
+ remove = function(){
+   console.log("okay");
+ }
 
   constructor() { }
 

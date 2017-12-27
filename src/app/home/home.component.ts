@@ -35,22 +35,22 @@ export class HomeComponent implements OnInit {
   
     ngOnInit() {
       //search bar
-      this.filteredOptions = this.myControl.valueChanges
-        .pipe(
-          startWith(''),
-          map(val => this.filter(val))
-        );
+      // this.filteredOptions = this.myControl.valueChanges
+      //   .pipe(
+      //     startWith(''),
+      //     map(val => this.filter(val))
+      //   );
 
 
-        this.http.get('http://localhost:54493/api/test').subscribe(
-          data =>{
+      //   this.http.get('http://localhost:54493/api/test').subscribe(
+      //     data =>{
            
           
             
-          }
+      //     }
           
           
-      )
+      // )
 
     }
   
