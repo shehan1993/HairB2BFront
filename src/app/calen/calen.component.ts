@@ -108,7 +108,8 @@ calendar = function(){
 /**      
 need to give diffrent identity to different dates
 
-law prioroty for last month and previous month days 
+law prioroty for last month and previous month days.
+
 if day is current month day or not, we have to check.
 setStylesUpper() = set the styles for first week of month
 **/
@@ -116,16 +117,15 @@ setStylesUpper() = set the styles for first week of month
 setStylesUpper = function(value){
    var slot:number = value%2;  
 
-    value = this.calenderArray[value];
-    if(value > 22){
+    var d = this.calenderArray[value];
+    if(d > 22){
     let styles = {
    'background-color':'#000000'//black color    
    };
    return styles;
   };
 
-
-  if(value >= 1 && value <= 7){
+  if(d >= 1 && d <= 7){
     return this.dayStaus(this.year,this.month,value,slot);
   }
      
@@ -136,8 +136,8 @@ setStylesUpper = function(value){
 setStylesDown = function(value){
   var slot:number = value%2;  
   
-    value = this.calenderArray[value];
-    if(value <15){
+    var d = this.calenderArray[value];
+    if(d <15){
     let styles = {
    'background-color':'#000000'    
    };
@@ -155,7 +155,7 @@ setStyle() function call from .html
 **/
 setStyle = function(value){
   var slot:number = value%2;  
-  value = this.calenderArray[value];
+ 
   return this.dayStaus(this.year,this.month,value,slot);
 
 }
@@ -165,17 +165,17 @@ setStyle = function(value){
 datesOfBusy = BDATES;
 datesOfPend = PDATES;
 
-/*
-busy days, or booked dates indicate in 'red' color,
-pending dates indicate in 'blue' color. 
+/** 
+* busy days, or booked dates indicate in 'red' color,
+* pending dates indicate in 'blue' color. 
 */
-dayStaus = function(y,m,d,s){
-var lengthOfArray = this.datesOfBusy.length
+dayStaus = function(y,m,value,s){
 
+var d = this.calenderArray[value];
+var lengthOfArray = this.datesOfBusy.length;
 for(var i = 0;i< lengthOfArray;i++){
 if(this.datesOfBusy[i].year == y && this.datesOfBusy[i].month == m){
   
-
     if(this.datesOfBusy[i].day == d && this.datesOfBusy[i].time == s){
       let styles = {
         'background-color':'#ff0000ea' //red color   
@@ -185,7 +185,6 @@ if(this.datesOfBusy[i].year == y && this.datesOfBusy[i].month == m){
  
   }
 }
-
 
 var lengthOfArray = this.datesOfPend.length
 for(var i =0;i< lengthOfArray;i++){
@@ -208,15 +207,22 @@ if(this.datesOfPend[i].year == y && this.datesOfPend[i].month == m){
  */
 
 myBookings = [];
+myStoreOfBooking = [];
 numberOfBookings = 0;
 
 selectedDate =  function(value){
   var bookingDescription;
-  var timeSlot = (value % 2 == 0?"morning":"evening");
+  var timeSlot = (value % 2 == 0 ? "morning":"evening");
   
   bookingDescription = "I want to book: " + this.year + " " +  this.months[this.month].viewValue + " " + this.calenderArray[value] +" - " + timeSlot;
 this.myBookings[this.numberOfBookings] = bookingDescription;
 this.numberOfBookings++;
+
+let styles = {
+  'font-size':'20px' //blue color   
+  }; 
+return styles;
+
 }
 
 /**
@@ -258,6 +264,7 @@ disableButton = function(value){
 }
 
 }
+
 
 
  

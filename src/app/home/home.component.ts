@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
+import { HttpClient , HttpErrorResponse,HttpParams, HttpHeaders } from '@angular/common/http'
 
 import {Observable} from 'rxjs/Observable';
 import {startWith} from 'rxjs/operators/startWith';
@@ -20,7 +21,7 @@ export class User {
 export class HomeComponent implements OnInit {
   searchString = "type the stylist name for search";
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   myControl: FormControl = new FormControl();
   
@@ -39,6 +40,18 @@ export class HomeComponent implements OnInit {
           startWith(''),
           map(val => this.filter(val))
         );
+
+
+        this.http.get('http://localhost:54493/api/test').subscribe(
+          data =>{
+           
+          
+            
+          }
+          
+          
+      )
+
     }
   
 

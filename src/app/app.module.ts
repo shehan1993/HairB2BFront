@@ -18,7 +18,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material'
 import {MatSliderModule} from '@angular/material/slider';
 import {MatFormFieldModule} from '@angular/material/form-field';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { CalenComponent } from './calen/calen.component';
 import { SalonViewComponent } from './salon-view/salon-view.component';
@@ -57,6 +57,7 @@ import { AppRoutingModule } from './/app-routing.module';
     MatSliderModule,
     MatFormFieldModule,
     AppRoutingModule,
+    HttpClientModule
     
   ],
   providers: [],
