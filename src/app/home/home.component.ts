@@ -25,40 +25,40 @@ export class HomeComponent implements OnInit {
 
   myControl: FormControl = new FormControl();
   
-    options = [
-      'One',
-      'Two',
-      'Three'
-    ];
   
+    options = [];
+
     filteredOptions: Observable<string[]>;
   
     ngOnInit() {
       //search bar
-      // this.filteredOptions = this.myControl.valueChanges
-      //   .pipe(
-      //     startWith(''),
-      //     map(val => this.filter(val))
-      //   );
+      this.filteredOptions = this.myControl.valueChanges
+        .pipe(
+          startWith(''),
+          map(val => this.filter(val))
+        );
 
 
-      //   this.http.get('http://localhost:54493/api/test').subscribe(
-      //     data =>{
-           
-          
+        this.http.get('http://localhost:50496/api/value').subscribe(
+          data =>{
+                       
+          for(let key in data){
+            console.log(key);
+            console.log(data[key]);         
+              this.options.push(data[key]);
+             
+           }
             
-      //     }
-          
-          
-      // )
-
+          })
     }
   
 
     //filter for search bar 
     filter(val: string): string[] {
-      return this.options.filter(option =>
-        option.toLowerCase().indexOf(val.toLowerCase()) === 0);
+      // return this.options.filter(option =>
+      //   option.toLowerCase().indexOf(val.toLowerCase()) === 0);
+      return this.options
+       
     }
 
 
