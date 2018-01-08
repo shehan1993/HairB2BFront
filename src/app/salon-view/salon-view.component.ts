@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Router, ActivatedRoute, Params} from '@angular/router';
+import { HttpClient , HttpErrorResponse,HttpParams, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-salon-view',
@@ -15,12 +16,43 @@ export class SalonViewComponent implements OnInit {
     {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
    
   ];
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute,private http:HttpClient) { }
+  userId;
 
+  
+  stylist_details = [];
   ngOnInit() {
+    // subscribe to router event
+    this.activatedRoute.params.subscribe((params: Params) => {
+         this.userId = params['id'];
+        
+      });
+
+
+      this.http.get('http://localhost:54949/api/get_stylists_name/'+this.userId).subscribe(
+        data =>{                     
+        for(let key in data){
+                      
+          this.stylist_details.push(data[key].id);
+          this.stylist_details.push(data[key].first_name);
+          this.stylist_details.push(data[key].last_name);
+          this.stylist_details.push(data[key].address_line_01);
+          this.stylist_details.push(data[key].address_line_02);
+          this.stylist_details.push(data[key].city);
+          this.stylist_details.push(data[key].state);
+          this.stylist_details.push(data[key].zip);
+          this.stylist_details.push(data[key].country);
+          this.stylist_details.push(data[key].Telephone);
+          this.stylist_details.push(data[key].description);
+          this.stylist_details.push(data[key].term_and_conditions);
+          this.stylist_details.push(data[key].charge_per_slot);
+          this.stylist_details.push(data[key].job_role_id);
+          this.stylist_details.push(data[key].src);
+          
+         //console.log(data[key]);
+         }
+          
+        })
   }
 
-  description = "A Fashion Stylist is one of the most popular emerging professions in the fashion world globally and is the job  title of someone who selects the clothing and accessories for published editorial features, print or television advertising campaigns, music videos, concert performances, and any public appearances made by ...";
-  skills_1 = "(1)Style Sense. Fashion stylists stay on top of the latest trends in the fashion community so that they can dress clients appropriately.Communication Skills. .."
-  skill_2 = "(2)Organizational Skills. ...Business Sense."
 }

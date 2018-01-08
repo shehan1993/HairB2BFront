@@ -7,14 +7,19 @@
   <mat-card-header>
      
     
-    <mat-card-title> <h2>My Profile</h2><br><h1>Shiba Inu</h1></mat-card-title>
+    <mat-card-title> <h2>My Profile</h2><br><h1>{{stylist_details[1]}} {{stylist_details[2]}}</h1></mat-card-title>
     
   </mat-card-header>
-  <img mat-card-image src="https://www.beautyschoolsdirectory.com/sites/default/files/2017-08/faq-program-hairstylist.jpg" alt="Photo of a Shiba Inu">
+  <img mat-card-image src={{stylist_details[14]}} alt="Photo of a Shiba Inu" style="height:400px">
   <mat-card-content>
     <p>
-      ADD1:<br>
-      ADD2:<br>
+        {{stylist_details[3]}}<br>
+        {{stylist_details[4]}}<br>
+        {{stylist_details[5]}}<br>
+        {{stylist_details[6]}}<br><br>      
+        {{stylist_details[8]}}<br>
+        +94{{stylist_details[9]}}<br>
+        charge per slot: {{stylist_details[12]}}$<br>
     </p>
   </mat-card-content>
   <mat-card-actions>
@@ -26,25 +31,25 @@
 
 
 <mat-grid-tile [colspan]=9 [rowspan]=2 style=" position:absolute;top:8px " >
-  <div style="position:relative;left:0px;bottom:200px">
+  <div style="position:relative;left:-18%;bottom:15%;">
 <app-calen ></app-calen>
   </div>
 </mat-grid-tile>
 
 
 <mat-grid-tile [colspan]=3 [rowspan]=1>
-    <p>
-        {{description}}<br>
-        ADD2:<br><br>
-        (1)skills vdfg  sef<br>
-        (2)skillscfd sdf<br>
+    <p style="font-size:200%">
+        
+        {{stylist_details[10]}}<br><br>
+        {{stylist_details[11]}}<br>
+       
          
       </p>
 
 </mat-grid-tile>
 
 
-<mat-grid-tile [colspan]=12 [rowspan]=0.5 style=" position:absolute;top:8px " >
+<mat-grid-tile [colspan]=12 [rowspan]=0.5 style=" position:absolute;top:8px" >
     <div style="position:relative;left:0px;">
 
   <app-img-casro ></app-img-casro>

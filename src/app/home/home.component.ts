@@ -5,6 +5,9 @@ import { HttpClient , HttpErrorResponse,HttpParams, HttpHeaders } from '@angular
 import {Observable} from 'rxjs/Observable';
 import {startWith} from 'rxjs/operators/startWith';
 import {map} from 'rxjs/operators/map';
+import {Http} from '@angular/http'
+
+
 
 export class User {
   constructor(public name: string) { }
@@ -19,16 +22,22 @@ export class User {
 
 
 export class HomeComponent implements OnInit {
-  searchString = "type the stylist name for search";
+ 
 
   constructor(private http:HttpClient) { }
+  searchString = "type the stylist name for search";
 
   myControl: FormControl = new FormControl();
   
   
     options = [];
-
+    options_id = [];
+   
+    stylists = [];
+    stylist_details = [];    
     filteredOptions: Observable<string[]>;
+
+
   
     ngOnInit() {
       //search bar
@@ -38,26 +47,63 @@ export class HomeComponent implements OnInit {
           map(val => this.filter(val))
         );
 
-
-        this.http.get('http://localhost:50496/api/value').subscribe(
+//all the names and ids fro database
+        this.http.get('http://localhost:54949/api/get_stylists_name').subscribe(
           data =>{
                        
           for(let key in data){
-            console.log(key);
-            console.log(data[key]);         
-              this.options.push(data[key]);
-             
+            
+             if(parseInt(key)%2 ==0 ){         
+               this.options.push(data[key]);
+
+             }else{
+              this.options_id.push(data[key]);
+             }
+           
            }
             
           })
+
+        
+//add few stylist to beginig of the page
+
+
+
+        this.http.get('http://localhost:54949/api/getStylistsProfileDetails').subscribe(
+          data =>{
+        
+            for(let key in data){
+             
+              this.stylist_details.push(data[key]);
+              this.store.push(data[key]);
+            }
+          }
+        )  
+
+
+//getting skils of the stylists to advance search
+this.http.get('http://localhost:54949/api/getSkills').subscribe(
+  data =>{
+
+    for(let key in data){
+    this.skills.push({ value:data[key].id,viewValue:data[key].skill});
+      
+    }
+  }
+)  
+
+
+
+
+
     }
   
 
     //filter for search bar 
     filter(val: string): string[] {
-      // return this.options.filter(option =>
-      //   option.toLowerCase().indexOf(val.toLowerCase()) === 0);
-      return this.options
+      return this.options.filter(option =>
+        option.toLowerCase().indexOf(val.toLowerCase()) === 0);
+     // return this.options
        
     }
 
@@ -76,6 +122,75 @@ export class HomeComponent implements OnInit {
       prevStep() {
         this.step--;
       }
+
+      skills = [];
+    
+
+/**
+ * to get the search itemfrom the search bar
+ * and get related details from the database and show them
+ */
+
+
+id:number;
+search_item:string;
+
+      search = function(search_item){
+      
+        let empty = [];
+        console.log("search item: "+this.options_id[this.options.indexOf(search_item)]);
+        this.http.get('http://localhost:54949/api/get_stylists_name/'+this.options_id[this.options.indexOf(search_item)]).subscribe(
+          
+          data =>{
+           
+          for(let key in data){
+            
+              this.stylist_details[0] = data[key];
+              this.stylist_details.splice(1,this.stylist_details.length)
+
+             
+                          
+           }
+          this.id = parseInt(data[0].id)
+            
+          })
+
+         
+      }
+//advance search functions
+
+skill;
+checked;
+advaceSearchDetails = [];
+store = [];
+advance_search = function(){
+
+  if(!this.checked){
+    this.advaceSearchDetails = [];
+  console.log("skill "+ this.skill)
+  this.http.get('http://localhost:54949/api/getSkills/'+ this.skill).subscribe(
+    
+    data =>{
+     
+    for(let key in data){
+      
+      this.advaceSearchDetails.push(data[key]);
+         
+     }
+    this.id = parseInt(data[0].id)
+      
+    })
+    //this.store = this.stylist_details;
+    this.stylist_details = this.advaceSearchDetails;
+  
+  }else{
+
+    this.stylist_details = this.store;
+  }
+
+  this.applyBtnClickCount++;
+}
+
 
       
   

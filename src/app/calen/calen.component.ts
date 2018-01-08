@@ -1,16 +1,70 @@
 import { Component, OnInit } from '@angular/core';
+import {Router, ActivatedRoute, Params} from '@angular/router';
+import { HttpClient , HttpErrorResponse,HttpParams, HttpHeaders } from '@angular/common/http';
+//import {DatesOFBusy} from './dates';
+import {DateOFPendings} from '../dates';
+
 import { getLocaleDateFormat } from '@angular/common';
 import { Local } from 'protractor/built/driverProviders';
 import {DatesOFBusy} from '../dates';
-import { BDATES } from '../meta-Dates';
-import { PDATES } from '../meta-Dates';
+// import { BDATES } from '../meta-Dates';
+
+// import { PDATES } from '../meta-Dates';
+
+
+export class datesofbusy{
+  year:number;
+  month:number;
+  day:number;
+  time:number;
+  
+  }
+
 
 @Component({
   selector: 'app-calen',
   templateUrl: './calen.component.html',
   styleUrls: ['./calen.component.css']
 })
+
 export class CalenComponent implements OnInit {
+
+userId;
+    
+BDATE: datesofbusy;
+PDATE: datesofbusy;
+BUSY =[];
+PENDING = []
+constructor(private activatedRoute: ActivatedRoute,private http:HttpClient) {
+
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.userId = params['id'];
+     
+   });
+   
+
+  
+  }
+  
+    ngOnInit() {
+          
+    this.year = new Date().getFullYear();
+    this.month = new Date().getMonth() ; 
+    this.today = new Date().getDate();
+    this.calendar();
+
+    this.http.get('http://localhost:54949/api/mark_as_busy/'+this.userId).subscribe(
+      data =>{                 
+  for(let key in data){
+    if(data[key].type == 0){
+       this.BUSY.push(data[key]);
+    }else if(data[key].type == 1){
+        this.PENDING.push(data[key]);
+    }    
+  }         
+      }) 
+    
+    }
 
   //years in view
   years = [
@@ -65,7 +119,7 @@ export class CalenComponent implements OnInit {
   
 //return numbers of dates in a month  
     daysInMonth = function (month,year) {
-      return new Date(year, month+1, 0).getDate();    
+      return new Date(year, month+1, 0).getDate();        
     }
   
 /*
@@ -73,7 +127,8 @@ export class CalenComponent implements OnInit {
 *in calendar array ,calendarAray[value] ,if value%2 == 0 then morning slot othervise evening slot  
 */
 calendar = function(){
-      
+    
+//console.log(this.datesOfBusy.length)
           var date = new Date(this.year,this.month,1);
           var day = date.getDay();
      
@@ -101,7 +156,8 @@ calendar = function(){
             this.calenderArray[j+1] =  this.calenderArray[j];  
             j +=2;
             remain++;
-          }      
+          }  
+            
       
       }  
   
@@ -153,33 +209,42 @@ get need dates from calender
 
 setStyle() function call from .html
 **/
+
+count = 0;
 setStyle = function(value){
-  var slot:number = value%2;  
- 
-  return this.dayStaus(this.year,this.month,value,slot);
+this.count++;
+var slot:number = value%2;  
+//this.setDayStatus();
+return this.dayStaus(this.year,this.month,value,slot);  
 
 }
 
 
 //need set status of the day as busy day or as pending day 
-datesOfBusy = BDATES;
-datesOfPend = PDATES;
-
+datesOfBusy = [];
+datesOfPend = [];
 /** 
 * busy days, or booked dates indicate in 'red' color,
 * pending dates indicate in 'blue' color. 
 */
 dayStaus = function(y,m,value,s){
 
+ this.datesOfBusy = this.BUSY;
+ this.datesOfPend = this.PENDING;
+
 var d = this.calenderArray[value];
 var lengthOfArray = this.datesOfBusy.length;
 for(var i = 0;i< lengthOfArray;i++){
-if(this.datesOfBusy[i].year == y && this.datesOfBusy[i].month == m){
-  
+
+if(this.datesOfBusy[i].year == y && this.datesOfBusy[i].month-1 == m){
+
     if(this.datesOfBusy[i].day == d && this.datesOfBusy[i].time == s){
+     
       let styles = {
         'background-color':'#ff0000ea' //red color   
+        
         }; 
+       
         return styles;
     }
  
@@ -188,11 +253,12 @@ if(this.datesOfBusy[i].year == y && this.datesOfBusy[i].month == m){
 
 var lengthOfArray = this.datesOfPend.length
 for(var i =0;i< lengthOfArray;i++){
-if(this.datesOfPend[i].year == y && this.datesOfPend[i].month == m){
+if(this.datesOfPend[i].year == y && this.datesOfPend[i].month-1 == m){
 
     if(this.datesOfPend[i].day == d && this.datesOfBusy[i].time == s){
       let styles = {
         'background-color':'#132cbbec' //blue color   
+
         }; 
         return styles;
     }
@@ -202,7 +268,7 @@ if(this.datesOfPend[i].year == y && this.datesOfPend[i].month == m){
 }
 
 /**
- * salons can book the stylists by clicking on the  day(morning slot or evening slot)
+ * salons can book the stylists by clicking on the day(morning slot or evening slot)
  * myBookings[] store the (year, month, day, time, slot) salons clicking 
  */
 
@@ -222,7 +288,6 @@ let styles = {
   'font-size':'20px' //blue color   
   }; 
 return styles;
-
 }
 
 /**
@@ -230,10 +295,11 @@ return styles;
  * bookings can be disable by disableButton() function
  * 
  * salon get view previous month and next month few dates or weeks
- * that dates can be disble by disableButton() function
+ * that dates can be disable by disableButton() function
  * 
  * if time slot is busy, need to disable it 
  */
+
 
 disableButton = function(value){
 
@@ -263,22 +329,33 @@ disableButton = function(value){
   }
 }
 
+
+//this.datesOfPend = this.PENDING;
+var d = this.calenderArray[value];
+var lengthOfArray = this.BUSY.length;
+var y = this.year;
+var m = this.month;
+var s = value%2;
+
+for(var i = 0;i< lengthOfArray;i++){
+
+if(this.BUSY[i].year == y && this.BUSY[i].month-1 == m){
+
+   if(this.BUSY[i].day == d && this.BUSY[i].time == s){
+   
+       return true;
+   }
+
+ }
 }
 
-items = ["acda","sfas","cde","cdc","wwwwwwa"];
+
+}
+
 
  remove = function(){
    console.log("okay");
  }
 
-  constructor() { }
-
-  ngOnInit() {
-    
-    this.year = new Date().getFullYear();
-    this.month = new Date().getMonth() ; 
-    this.today = new Date().getDate();
-    this.calendar();
-  }
 
 }

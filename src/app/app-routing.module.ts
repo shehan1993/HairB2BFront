@@ -8,7 +8,8 @@ const routes: Routes = [
   {path:'',redirectTo:'/home',pathMatch:'full'},
   {path:'salon-view',component:SalonViewComponent},
   {path:'home',component:HomeComponent},
-  {path:'calendar',component:CalenComponent}
+  {path:'calendar',component:CalenComponent},
+  {path:'salon-view/:id',component:SalonViewComponent}
 
 ];
 

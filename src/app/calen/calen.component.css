@@ -40,16 +40,16 @@
 
 #booking-details{
     position: absolute;
-    left: 775px;
+    left: 500px;
     top:375px;
 }
 
 
 ul{
-    width: 600px;
-    position: relative;
-    right: -800px;
-    bottom:900px;
+    width: 500px;
+    position: absolute;
+    right: -500px;
+    top:350px;
     list-style: none;
     font-size: 40px;
     color:#686868;
@@ -72,4 +72,12 @@ span {
     position: relative;
     float:right;
     margin-right: 10px; 
+}
+
+h1 {
+
+    position: relative;
+    top:-950px;
+    left:800px
+
 }
