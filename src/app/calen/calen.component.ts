@@ -176,7 +176,7 @@ setStylesUpper = function(value){
     var d = this.calenderArray[value];
     if(d > 22){
     let styles = {
-   'background-color':'#000000'//black color    
+   'background-color':' rgba(29, 27, 26, 0.76)' //black color    
    };
    return styles;
   };
@@ -195,7 +195,7 @@ setStylesDown = function(value){
     var d = this.calenderArray[value];
     if(d <15){
     let styles = {
-   'background-color':'#000000'    
+   'background-color':' rgba(29, 27, 26, 0.76)'    
    };
    return styles;
   }else{
@@ -267,28 +267,7 @@ if(this.datesOfPend[i].year == y && this.datesOfPend[i].month-1 == m){
 
 }
 
-/**
- * salons can book the stylists by clicking on the day(morning slot or evening slot)
- * myBookings[] store the (year, month, day, time, slot) salons clicking 
- */
 
-myBookings = [];
-myStoreOfBooking = [];
-numberOfBookings = 0;
-
-selectedDate =  function(value){
-  var bookingDescription;
-  var timeSlot = (value % 2 == 0 ? "morning":"evening");
-  
-  bookingDescription = this.year + "/" +  this.months[this.month].viewValue + "/" + this.calenderArray[value] +" - " + timeSlot;
-this.myBookings[this.numberOfBookings] = bookingDescription;
-this.numberOfBookings++;
-
-let styles = {
-  'font-size':'20px' //blue color   
-  }; 
-return styles;
-}
 
 /**
  * salon can click past days and today for bookings, this 
@@ -353,8 +332,33 @@ if(this.BUSY[i].year == y && this.BUSY[i].month-1 == m){
 }
 
 
- remove = function(){
-   console.log("okay");
+
+/**
+ * salons can book the stylists by clicking on the day(morning slot or evening slot)
+ * myBookings[] store the (year, month, day, time, slot) salons clicking 
+ */
+
+myBookings = [];
+myStoreOfBooking = [];
+numberOfBookings = 0;
+
+selectedDate =  function(value){
+  var bookingDescription;
+  var timeSlot = (value % 2 == 0 ? "morning":"evening");
+  
+  bookingDescription = this.year + "/" +  this.months[this.month].viewValue + "/" + this.calenderArray[value] +" - " + timeSlot;
+  if(this.myBookings.indexOf(bookingDescription) == -1 && this.numberOfBookings <=14 ){
+this.myBookings[this.numberOfBookings] = bookingDescription;
+this.numberOfBookings++;
+  }
+}
+
+
+ remove = function(i){
+ 
+  this.myBookings.splice(this.myBookings.indexOf(i), 1);
+  this.numberOfBookings--;
+
  }
 
 

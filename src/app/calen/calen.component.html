@@ -794,8 +794,10 @@
 <ul >
     <li *ngFor = "let i of myBookings">
         {{i}}
-        <span (click)="remove()" >X</span>
+        <span (click)="remove(i)" >X</span>
     </li>
+    <button mat-button color="accent">BOOK</button>
 </ul>
+
 </div>
 </div>

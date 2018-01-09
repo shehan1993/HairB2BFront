@@ -8,7 +8,6 @@ import {map} from 'rxjs/operators/map';
 import {Http} from '@angular/http'
 
 
-
 export class User {
   constructor(public name: string) { }
 }
@@ -20,24 +19,19 @@ export class User {
 })
 
 
-
 export class HomeComponent implements OnInit {
  
-
   constructor(private http:HttpClient) { }
   searchString = "type the stylist name for search";
 
   myControl: FormControl = new FormControl();
-  
-  
+    
     options = [];
     options_id = [];
    
     stylists = [];
     stylist_details = [];    
     filteredOptions: Observable<string[]>;
-
-
   
     ngOnInit() {
       //search bar
@@ -63,12 +57,8 @@ export class HomeComponent implements OnInit {
            }
             
           })
-
-        
+     
 //add few stylist to beginig of the page
-
-
-
         this.http.get('http://localhost:54949/api/getStylistsProfileDetails').subscribe(
           data =>{
         
@@ -90,13 +80,7 @@ this.http.get('http://localhost:54949/api/getSkills').subscribe(
       
     }
   }
-)  
-
-
-
-
-
-    }
+)}
   
 
     //filter for search bar 
@@ -163,26 +147,36 @@ skill;
 checked;
 advaceSearchDetails = [];
 store = [];
+sliderValue = 200;
+priceSearchResults = [];
+filterResults = [];
 advance_search = function(){
 
   if(!this.checked){
     this.advaceSearchDetails = [];
+    this.priceSearchResults = [];
+    
   console.log("skill "+ this.skill)
+
   this.http.get('http://localhost:54949/api/getSkills/'+ this.skill).subscribe(
     
     data =>{
      
     for(let key in data){
       
+      if(data[key].charge_per_slot <= this.sliderValue){
       this.advaceSearchDetails.push(data[key]);
+      }
+
          
      }
     this.id = parseInt(data[0].id)
       
     })
-    //this.store = this.stylist_details;
-    this.stylist_details = this.advaceSearchDetails;
-  
+    this.store = this.stylist_details;
+    
+      this.stylist_details = this.advaceSearchDetails;
+
   }else{
 
     this.stylist_details = this.store;
@@ -192,6 +186,8 @@ advance_search = function(){
 }
 
 
-      
-  
+//advance search slider
+
+
+
 }

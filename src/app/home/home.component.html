@@ -1,7 +1,7 @@
 
 
 <div class="search">
-    <img src= "http://www.elandashairgallery.com/wp-content/uploads/2014/11/ParalaxBG.png" alt="Photo of beauty" width="1900" height="500">
+    <img src= "https://i.pinimg.com/736x/cb/1f/84/cb1f847a7a7b97000a4429d4805dc05a--small-salon-makeup-salon.jpg" alt="Photo of beauty" width="1900" height="500">
 
 </div>
 
@@ -48,18 +48,16 @@
             <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  Destination
+                  Price
                 </mat-panel-title>
                 <mat-panel-description>
-                  Type the country name
-                  <mat-icon>map</mat-icon>
+                  Set the Max price( per slot ) you need:
+                  <mat-icon>attach_money</mat-icon>
                 </mat-panel-description>
               </mat-expansion-panel-header>
           
-              <mat-form-field>
-                <input matInput placeholder="Country">
-              </mat-form-field>
-          
+              <mat-slider [(ngModel)]="sliderValue" [min] = 200 [max]=1000 ></mat-slider>
+              <input matInput type="number" placeholder="Value" [(ngModel)]="sliderValue">$
               <mat-action-row>
                 <button mat-button color="warn" (click)="prevStep()">Previous</button>
                 <button mat-button color="primary" (click)="nextStep()">Next</button>
@@ -113,5 +111,5 @@
 
    
    
-
+  
  
