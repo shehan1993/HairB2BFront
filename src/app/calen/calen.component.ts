@@ -255,7 +255,7 @@ var lengthOfArray = this.datesOfPend.length
 for(var i =0;i< lengthOfArray;i++){
 if(this.datesOfPend[i].year == y && this.datesOfPend[i].month-1 == m){
 
-    if(this.datesOfPend[i].day == d && this.datesOfBusy[i].time == s){
+    if(this.datesOfPend[i].day == d && this.datesOfPend[i].time == s){
       let styles = {
         'background-color':'#132cbbec' //blue color   
 

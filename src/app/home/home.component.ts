@@ -79,6 +79,7 @@ this.http.get('http://localhost:54949/api/getSkills').subscribe(
     this.skills.push({ value:data[key].id,viewValue:data[key].skill});
       
     }
+    this.skills.push({ value:1000 ,viewValue:"All"});
   }
 )}
   
@@ -93,7 +94,7 @@ this.http.get('http://localhost:54949/api/getSkills').subscribe(
 
 
     //Exapanding windows
-    step = 0;
+    step = -1;
     
       setStep(index: number) {
         this.step = index;
@@ -120,7 +121,7 @@ id:number;
 search_item:string;
 
       search = function(search_item){
-      
+    
         let empty = [];
         console.log("search item: "+this.options_id[this.options.indexOf(search_item)]);
         this.http.get('http://localhost:54949/api/get_stylists_name/'+this.options_id[this.options.indexOf(search_item)]).subscribe(
@@ -131,21 +132,19 @@ search_item:string;
             
               this.stylist_details[0] = data[key];
               this.stylist_details.splice(1,this.stylist_details.length)
-
-             
-                          
+                      
            }
           this.id = parseInt(data[0].id)
             
           })
-
-         
+        
       }
 //advance search functions
 
-skill;
-checked;
-advaceSearchDetails = [];
+skill=1000;
+checked=false;
+advaceSearchSkillsDetails = [];
+advaceSearchpaymentDetails = [];
 store = [];
 sliderValue = 200;
 priceSearchResults = [];
@@ -153,10 +152,9 @@ filterResults = [];
 advance_search = function(){
 
   if(!this.checked){
-    this.advaceSearchDetails = [];
+    this.advaceSearchSkillDetails = [];
     this.priceSearchResults = [];
-    
-  console.log("skill "+ this.skill)
+  
 
   this.http.get('http://localhost:54949/api/getSkills/'+ this.skill).subscribe(
     
@@ -165,29 +163,86 @@ advance_search = function(){
     for(let key in data){
       
       if(data[key].charge_per_slot <= this.sliderValue){
-      this.advaceSearchDetails.push(data[key]);
+      this.advaceSearchSkillDetails.push(data[key]);
+      this.advaceSearchpaymentDetails.push(data[key]);
       }
 
          
      }
-    this.id = parseInt(data[0].id)
+   // this.id = parseInt(data[0].id)
       
     })
+
+
+
     this.store = this.stylist_details;
     
-      this.stylist_details = this.advaceSearchDetails;
+      this.stylist_details = this.advaceSearchSkillDetails;
 
   }else{
 
     this.stylist_details = this.store;
   }
 
-  this.applyBtnClickCount++;
+  
 }
 
+selectSkill = function(){
+ 
+  if(this.checked){
+//console.log("here ");    //this.store = this.stylist_details;
+    this.http.get('http://localhost:54949/api/getSkills/'+ this.skill).subscribe(
+      
+      data =>{
+        this.advaceSearchSkillDetails = [];
+      for(let key in data){
+        if(data[key].charge_per_slot <= this.sliderValue){       
+        this.advaceSearchSkillDetails.push(data[key]);
+        }
+       }
+     // this.id = parseInt(data[0].id)
+     if(this.advaceSearchSkillDetails.length >= 4 ){
+      for(var j =0;j<4;j++){
+        
+      this.stylist_details[j] = this.advaceSearchSkillDetails[j];
+      }
+    }else{
+      this.stylist_details = this.advaceSearchSkillDetails;
+    }
+    
+      })
 
-//advance search slider
+    
 
+  }
+}
+
+// setPayment = function(){
+//   if(this.checked){
+//     this.http.get('http://localhost:54949/api/getPayments/'+ this.sliderValue).subscribe(
+      
+//       data =>{
+//         this.advaceSearchpaymentDetails = [];
+//       for(let key in data){
+               
+//         this.advaceSearchpaymentDetails.push(data[key]);
+              
+//        }
+//      this.id = parseInt(data[0].id)
+//     if(this.advaceSearchpaymentDetails.length >= 4 ){
+//       for(var j =0;j<4;j++){
+
+//      this.stylist_details[j] = this.advaceSearchpaymentDetails[j];
+//       }
+//     }else{
+//       this.stylist_details = this.advaceSearchpaymentDetails;
+//     }
+    
+//       })
+
+
+//   }
+// }
 
 
 }
